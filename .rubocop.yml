@@ -20,8 +20,8 @@ RSpec/MessageSpies:
 
 Metrics/BlockLength:
   Exclude:
-    - 'Gemfile'
-    - 'spec/**/*.rb'
+    - "Gemfile"
+    - "spec/**/*.rb"
 
 Metrics/ClassLength:
   Max: 100
