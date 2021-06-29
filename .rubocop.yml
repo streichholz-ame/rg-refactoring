@@ -1,8 +1,11 @@
 require: rubocop-rspec
 
+<<<<<<< HEAD
 AllCops:
   NewCops: enable
 
+=======
+>>>>>>> 3336aad... initial version
 RSpec/MessageChain:
   Enabled: false
 
