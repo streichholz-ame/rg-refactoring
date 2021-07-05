@@ -9,7 +9,6 @@ class MoneyOperations
         break(Constants::EXIT_COMMAND) if exit?(input)
 
         card_position = card.to_i
-
         break(card_position) if card.valid_number?(card_position, 1, @cards.size)
 
         output_message('error.wrong_card')

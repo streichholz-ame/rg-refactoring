@@ -7,11 +7,11 @@ class CapitalistCard < BasicCard
     @number ||= generate_card_number
   end
 
+  private
+
   def start_balance
     100.00
   end
-
-  private
 
   def withdraw_percent
     4

@@ -7,11 +7,11 @@ class VirtualCard < BasicCard
     @number ||= generate_card_number
   end
 
+  private
+
   def start_balance
     150.00
   end
-
-  private
 
   def withdraw_percent
     88

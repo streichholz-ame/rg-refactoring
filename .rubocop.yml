@@ -1,11 +1,11 @@
 require: rubocop-rspec
 
-<<<<<<< HEAD
 AllCops:
   NewCops: enable
+  Exclude:
+    - "spec/account_spec.rb"
+    - "account.rb"
 
-=======
->>>>>>> 3336aad... initial version
 RSpec/MessageChain:
   Enabled: false
 

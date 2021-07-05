@@ -14,18 +14,11 @@ class Console
 
   def console
     scenario = user_input(:hello)
-
     case scenario
     when Constants::CREATE_COMMAND then create
     when Constants::LOAD_COMMAND then load
     else exit
     end
-  end
-
-  def load
-    @current_account = account_commands.load_account
-    update_current_account(current_account)
-    main_menu
   end
 
   def create
@@ -56,6 +49,12 @@ class Console
   end
 
   private
+
+  def load
+    @current_account = account_commands.load_account
+    update_current_account(current_account)
+    main_menu
+  end
 
   def update_current_account(current_account)
     card_commands.update_current_account(current_account)
