@@ -18,12 +18,9 @@ class TransactionCommands
     output_message('common.choose_card_withdrawing')
     current_card = find_card(current_account)
     return unless current_card
-
     return unless MoneyOperations.withdraw_operation(current_card, user_input('common.withdraw_amount').to_i)
 
-    cards_to_store.push current_account
-
-    save_cards_data(cards_to_store)
+    store_card_data(cards_to_store, current_account)
   end
 
   def put_money
@@ -31,12 +28,9 @@ class TransactionCommands
     output_message('common.choose_card')
     current_card = find_card(current_account)
     return unless current_card
-
     return unless MoneyOperations.put_operation(current_card, user_input('common.input_amount').to_i)
 
-    cards_to_store.push current_account
-
-    save_cards_data(cards_to_store)
+    store_card_data(cards_to_store, current_account)
   end
 
   def send_money
@@ -44,13 +38,16 @@ class TransactionCommands
     output_message('common.choose_card_sending')
     sender_card = find_card(current_account)
     recipient_card = find_card_number
-
     return unless recipient_card && sender_card
-
     return unless MoneyOperations.send_operation(sender_card, recipient_card, user_input('common.withdraw_amount').to_i)
 
-    cards_to_store.push current_account
+    store_card_data(cards_to_store, current_account)
+  end
 
+  private
+
+  def store_card_data(cards_to_store, current_account)
+    cards_to_store.push current_account
     save_cards_data(cards_to_store)
   end
 end

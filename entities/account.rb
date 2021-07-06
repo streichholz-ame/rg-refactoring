@@ -23,10 +23,10 @@ class Account
   end
 
   def add_card(card)
-    @cards << card
+    cards << card
   end
 
   def delete_card(card_index)
-    @cards.delete(card_index)
+    cards.delete(card_index)
   end
 end

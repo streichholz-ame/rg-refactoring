@@ -1,4 +1,14 @@
 module ConsoleHelper
+  def authenticated?(records)
+    @login == records[:login] && @password == records[:password]
+  end
+
+  def accounts
+    load_data(@file_path)
+  end
+
+  private
+
   def show_cards_list(cards)
     cards.each do |card|
       output_message('cards.card', number: card.number, type: card.type)
@@ -48,10 +58,6 @@ module ConsoleHelper
     save_data(@file_path, account_data)
   end
 
-  def authenticated?(records)
-    @login == records[:login] && @password == records[:password]
-  end
-
   def exit?(command)
     command == Constants::EXIT_COMMAND
   end
@@ -83,10 +89,6 @@ module ConsoleHelper
 
   def confirmed?(answer)
     answer == Constants::AGREE_COMMAND
-  end
-
-  def accounts
-    load_data(@file_path)
   end
 
   def validate_card_number(card_number)

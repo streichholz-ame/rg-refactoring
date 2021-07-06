@@ -2,19 +2,6 @@ class MoneyOperations
   class << self
     include ConsoleHelper
 
-    def find_card_position(card)
-      loop do
-        show_cards_list(current_account.cards)
-        input = gets.chomp
-        break(Constants::EXIT_COMMAND) if exit?(input)
-
-        card_position = card.to_i
-        break(card_position) if card.valid_number?(card_position, 1, @cards.size)
-
-        output_message('error.wrong_card')
-      end
-    end
-
     def withdraw_operation(current_card, amount)
       return false unless check_amount(amount)
       return false if withdraw_not_enough?(current_card.balance, amount, current_card.withdraw_tax(amount))
@@ -43,6 +30,21 @@ class MoneyOperations
       output_put_message(amount, sender_card, sender_card.sender_tax(amount), sender_card.balance)
       output_put_message(amount, recipient_card, recipient_card.put_tax(amount), recipient_card.balance)
       true
+    end
+
+    private
+
+    def find_card_position(card)
+      loop do
+        show_cards_list(current_account.cards)
+        input = gets.chomp
+        break(Constants::EXIT_COMMAND) if exit?(input)
+
+        card_position = card.to_i
+        break(card_position) if card.valid_number?(card_position, 1, @cards.size)
+
+        output_message('error.wrong_card')
+      end
     end
 
     def withdraw_not_enough?(balance, amount, tax)

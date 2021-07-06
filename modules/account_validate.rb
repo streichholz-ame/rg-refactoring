@@ -1,6 +1,8 @@
 module AccountValidate
   include Validation
 
+  private
+
   def validate_name
     @errors.push(I18n.t('validation.name.first_letter')) if value_empty?(@name) || @name[0].upcase != @name[0]
   end
